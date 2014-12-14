@@ -1,0 +1,8 @@
+*.pyc
+*~
+._*
+/media
+/text
+/png
+*.PDF
+*.pdf

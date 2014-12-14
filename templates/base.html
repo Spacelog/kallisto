@@ -1,0 +1,25 @@
+{% extends "cape/base.html" %}
+{% load i18n %}
+
+{% block head-title-sitename %}Kallisto{% endblock %}
+
+{% block body-sheath %}
+  <header>
+    {% trans "Kallisto powering Spacelog." %}
+    {% if request.user.is_authenticated %}
+      {% blocktrans with name=request.user.name count cleaned=request.user.page_revisions.count %}
+        {{ name }}, you have cleaned 1 page.
+      {% plural %}
+        {{ name }}, you have cleaned {{ cleaned }} pages.
+      {% endblocktrans %}
+
+      {% url "logout" as logout_url %}
+      {% url "password_change" as password_change_url %}    
+      {% blocktrans %}
+      <a href='{{ logout_url }}'>Logout</a> or
+      <a href='{{ password_change_url }}'>change password</a>?
+      {% endblocktrans %}
+    {% endif %}
+  </header>
+  {% block content %}{% endblock %}
+{% endblock %}

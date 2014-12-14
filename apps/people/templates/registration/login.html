@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+  {% if request.user.is_authenticated %}
+    <h1>{% trans "Already logged in" %}</h1>
+    <p>
+      {% url "password_change" as password_change_url %}
+      {% blocktrans trimmed %}
+        You're already logged in &mdash;
+        do you want to <a href='{{ password_change_url }}'>change your password</a>?
+      {% endblocktrans %}
+    </p>
+  {% else %}
+    <h1>{% trans "Login" %}</h1>
+
+    <form id='login-form' method='POST' action='{{ action }}'>
+      {% csrf_token %}
+
+      {{ form.non_field_errors }}
+
+      <label for='{{ form.username.id_for_label }}'>Email</label>
+      {{ form.username.errors }}
+      {{ form.username }}
+
+      <label for='{{ form.password.id_for_label }}'>Password</label>
+      {{ form.password.errors }}
+      {{ form.password }}
+
+      <p>
+        {% url "password_reset" as password_reset_url %}
+        {% blocktrans trimmed %}
+          Forgot your password?
+          <a href='{{ password_reset_url }}'>Reset it here</a>.
+        {% endblocktrans %}
+      </p>
+      <button type='submit'>{% trans "Login" %}</button>
+    </form>
+  {% endif %}
+{% endblock %}

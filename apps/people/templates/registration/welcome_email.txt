@@ -1,0 +1,12 @@
+{% load i18n %}{% autoescape off %}{% blocktrans %}Welcome to Kallisto!
+
+You've just set up an account with us, but you'll need to confirm your
+email address before you can start cleaning transcripts with us.
+
+Just go to the following address:
+
+{{ confirm_url }}
+
+Your friends at Kallisto.
+{% endblocktrans %}
+{% endautoescape %}

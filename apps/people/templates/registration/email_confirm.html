@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Confirm your email address" %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans "Confirm your email address" %}</h1>
+
+  <p>
+    {% blocktrans %}
+      Someone (hopefully you!) has set up a new account with us using your
+      email address <code>{{ email }}</code>.
+    {% endblocktrans %}
+  </p>
+
+  <p>{% trans "If you're ok with us sending you emails, please hit the button below. If you didn't set up an account with us or don't hit the button, we'll never send you an email again." %}</p>
+
+  <form id='confirm-email-form' method='POST' action=''>
+    {% csrf_token %}
+    <input type='hidden' name='next' value='{{ next }}'>
+    <button type='submit'>{% trans "Confirm this email" %}</button>
+  </form>
+{% endblock %}

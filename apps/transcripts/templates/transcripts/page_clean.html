@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Clean a page" %}{% endblock %}
+
+{% block content %}
+  <h1>{% blocktrans with number=page.number mission=page.mission %}Cleaning page {{ number }} of {{ mission }}{% endblocktrans %}</h1>
+
+  <div id='original'>
+    <img src='{{ page.original.url }}' width='{{ page.original_width }}' height='{{ page.original_height }}' alt='{% trans "Original page scan" %}'>
+  </div>
+
+  <div id='cleaned'>
+    <form method='POST' id='clean'>
+      {{ form.non_field_errors }}
+      {% csrf_token %}
+      {% if form.errors %}
+        {# errors most likely due to losing the lock #}
+        {{ form.text.errors }}
+        {{ form.text.label }}
+        {{ form.text }}
+        <button type='submit'>{% trans "Save changes" %}</button>
+      {% elif page.is_locked and page.locked_by == request.user %}
+        {{ form.text.errors }}
+        {{ form.text.label }}
+        {{ form.text }}
+        <button type='submit'>{% trans "Save changes" %}</button>
+      {% elif page.is_locked %}
+        {% blocktrans with locked_by=page.locked_by locked_until=page.locked_until|timeuntil %}Page is locked by {{ locked_by }} for {{ locked_until }}.{% endblocktrans %}
+      {% else %}
+        {% trans "You can't edit this transcript page at the moment." %}
+      {% endif %}
+    </form>
+  </div>
+{% endblock %}

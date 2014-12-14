@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title %}{% trans "Kallisto powering Spacelog" %}{% endblock %}
+
+{% block content %}
+<h1>
+  {% blocktrans with name=mission.name %}We are working on {{ name }}{% endblocktrans %}
+  <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}From {{ start }} to {{ end }}{% endblocktrans %}'>
+</h1>
+
+<a href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a>
+{% endblock %}

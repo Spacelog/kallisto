@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Sign up" %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans "Sign up" %}</h1>
+
+  <p>{% trans "Just give us your email, a password, and the name you'd like us to show on the site (eg for league tables)." %}</p>
+
+  <form method='POST' id='register'>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {{ form.email.label }}
+    {{ form.email.errors }}
+    {{ form.email }}
+
+    {{ form.name.label }}
+    {{ form.name.errors }}
+    {{ form.name }}
+
+    {{ form.password.label }}
+    {{ form.password.errors }}
+    {{ form.password }}
+    
+    <button type='submit'>{% trans "Sign up" %}</button>
+  </form>
+{% endblock %}

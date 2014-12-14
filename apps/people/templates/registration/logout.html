@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Log out" %}{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h1>{% trans "Log out?" %}</h1>
+
+    <form id='logout-form' method='POST' action='{% url "logout" %}'>
+      {% csrf_token %}
+      <button type='submit'>{% trans "Logout" %}</button>
+    </form>
+  {% else %}
+    <h1>{% trans "Already logged out." %}</h1>
+
+    <p><a href='{% url "login" %}'>{% trans "Log in again?" %}</a></p>
+  {% endif %}
+{% endblock %}

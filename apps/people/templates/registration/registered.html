@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Please confirm your email address" %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans "Please confirm your email address" %}</h1>
+
+  <p>{% trans "We've just sent you an email with a link to confirm your new account. Once you've done that you'll be able to start cleaning transcripts with us." %}</p>
+{% endblock %}

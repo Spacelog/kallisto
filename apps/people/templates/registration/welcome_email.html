@@ -1,0 +1,17 @@
+{% load i18n %}<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>{% block title %}{{ subject }}{% endblock %}</title>
+  </head>
+  <body>
+    <h1>{% trans "Welcome to Kallisto!" %}</h1>
+
+    <p>
+      {% blocktrans trimmed %}
+        You've just set up an account, but you'll need to <a href='{{ confirm_url }}'>confirm your email address</a> before you can start cleaning transcripts with us.
+      {% endblocktrans %}
+    </p>
+
+    <p>{% trans "Your friends at Kallisto." %}</p>
+  </body>
+</html>
