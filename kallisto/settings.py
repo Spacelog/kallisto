@@ -141,3 +141,5 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 AUTH_USER_MODEL = 'people.User'
 LOGIN_REDIRECT_URL = 'homepage'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
