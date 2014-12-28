@@ -2,23 +2,17 @@
 {% load i18n %}
 
 {% block head-title %}{% trans "Kallisto powering Spacelog" %}{% endblock %}
+{% block body-class %}home{% endblock %}
 
 {% block content %}
 <h1>
-  {% blocktrans with name=mission.name %}We are working on {{ name }}{% endblocktrans %}
-  <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}From {{ start }} to {{ end }}{% endblocktrans %}'>
+  {% blocktrans with name=mission.name %}<b>We are working on </b>{{ name }}{% endblocktrans %}
+  <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}from {{ start }} to {{ end }}{% endblocktrans %}'>
 </h1>
 
 {% if request.user.is_authenticated %}
-<p><a href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
+<p><a class='button' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
 {% else %}
-<p>
-  {% url "login" as login_url %}
-  {% url "register" as register_url %}
-  {% blocktrans trimmed %}
-    <a href='{{ login_url }}'>Login</a> to get started, or
-    <a href='{{ register_url }}'>sign up</a>!
-  {% endblocktrans %}
-</p>
+<p><a class='button' href='{% url "register" %}'>{% trans "Register to start cleaning" %}</a></p>
 {% endif %}
 {% endblock %}

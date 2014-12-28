@@ -18,9 +18,29 @@ th{font-style:normal;font-weight:normal;}
 a{color:#00abd7;text-decoration:none;}
 a:active,a:focus,a:hover{text-decoration:underline;}
 /* Base */
-body{ font-family: serif; }
+body { font-family: serif; }
 h1 {
-    font-family:"Helvetica Neue","Arial",sans-serif;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    text-align: center;
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 6px;
+}
+b {
+    position: absolute;
+    left: -9999px;
+}
+.button {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    display: block;
+    color: blue;
+    background-color: lightblue;
+    width: 20em;
+    max-width: 90%;
+    margin: 9px auto;
+    padding: 5px 20px;
+    border-radius: 5px;
+    text-align: center;
 }
 header {
     font-family: "Helvetica Neue", "Arial", sans-serif;
@@ -31,10 +51,6 @@ header {
     font-size: 14px;
     line-height: 18px;
 }
-header b {
-    position: absolute;
-    left: -9999px;
-}
 header:after,
 header p:after {
     content: " ";
@@ -44,6 +60,10 @@ header p:after {
 header h1 {
     display: block;
     float: left;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 0;
 }
 header p {
     display: block;
@@ -107,4 +127,9 @@ html.js-ready header ul.anon.user-options li {
 }
 html.js-ready header ul.anon.user-options li:hover {
     background-color: inherit;
+}
+/* Pages */
+.home h1 img {
+    display: block;
+    margin: 9px auto;
 }
