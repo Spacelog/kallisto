@@ -21,11 +21,11 @@
 
       {{ form.non_field_errors }}
 
-      <label for='{{ form.username.id_for_label }}'>Email</label>
+      {{ form.username.label_tag }}
       {{ form.username.errors }}
       {{ form.username }}
 
-      <label for='{{ form.password.id_for_label }}'>Password</label>
+      {{ form.password.label_tag }}
       {{ form.password.errors }}
       {{ form.password }}
 

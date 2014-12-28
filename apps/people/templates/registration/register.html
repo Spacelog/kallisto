@@ -12,15 +12,15 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    {{ form.email.label }}
+    {{ form.email.label_tag }}
     {{ form.email.errors }}
     {{ form.email }}
 
-    {{ form.name.label }}
+    {{ form.name.label_tag }}
     {{ form.name.errors }}
     {{ form.name }}
 
-    {{ form.password.label }}
+    {{ form.password.label_tag }}
     {{ form.password.errors }}
     {{ form.password }}
     
