@@ -256,7 +256,11 @@ class Revision(models.Model):
     when = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.text
+        return _(u"p%(page)s of %(mission)s by %(by)s") % {
+            'page': self.page.number,
+            'mission': self.page.mission.name,
+            'by': self.by.name
+        }
 
     class Meta:
         unique_together = ('page', 'by')
