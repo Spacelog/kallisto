@@ -212,3 +212,65 @@ html.js-ready header ul.anon.user-options li:hover {
     border: none;
     font-size: 18px;
 }
+
+/* Cleaning page for desktop at various sizes */
+@media (min-width: 960px) {
+    .clean.page #cleaned textarea,
+    .clean.page #cleaned div {
+        font-size: 14px;
+        padding: 42px 0;
+    }
+}
+
+@media (min-width: 1300px) {
+    .clean.page #cleaned textarea,
+    .clean.page #cleaned div {
+        font-size: 18px;
+        padding: 54px 0;
+    }
+}
+
+@media (min-width: 1500px) {
+    .clean.page h2 {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .clean.page #content:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+
+    .clean.page #original,
+    .clean.page #cleaned {
+        float: left;
+        width: 49%;
+    }
+
+    .clean.page #original {
+        margin-right: 1%;
+    }
+
+    .clean.page #cleaned textarea,
+    .clean.page #cleaned div {
+        font-size: 12px;
+        padding: 36px 0;
+    }
+}
+
+@media (min-width: 1750px) {
+    .clean.page #cleaned textarea,
+    .clean.page #cleaned div {
+        font-size: 14px;
+        padding: 42px 0;
+    }
+}
+
+@media (min-width: 1900px) {
+    .clean.page #cleaned textarea,
+    .clean.page #cleaned div {
+        font-size: 15px;
+        padding: 45px 0;
+    }
+}
