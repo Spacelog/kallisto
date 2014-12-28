@@ -9,5 +9,16 @@
   <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}From {{ start }} to {{ end }}{% endblocktrans %}'>
 </h1>
 
-<a href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a>
+{% if request.user.is_authenticated %}
+<p><a href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
+{% else %}
+<p>
+  {% url "login" as login_url %}
+  {% url "register" as register_url %}
+  {% blocktrans trimmed %}
+    <a href='{{ login_url }}'>Login</a> to get started, or
+    <a href='{{ register_url }}'>sign up</a>!
+  {% endblocktrans %}
+</p>
+{% endif %}
 {% endblock %}

@@ -3,12 +3,7 @@ from apps.transcripts.models import Mission
 
 
 class Homepage(TemplateView):
-
-    def get_template_names(self):
-        if self.request.user.is_authenticated():
-            return [ 'homepage/authenticated.html' ]
-        else:
-            return [ 'homepage/anonymous.html' ]
+    template_name = 'homepage/home.html'
 
     def get_context_data(self, **kwargs):
         kwargs.update(
