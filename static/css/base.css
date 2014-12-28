@@ -189,13 +189,13 @@ html.js-ready header ul.anon.user-options li:hover {
     margin: 0;
     padding: 0;
 }
-.clean.page #cleaned {
+.clean.page #clean {
     width: 90%;
     margin: 0 auto;
     padding: 0;
 }
-.clean.page #cleaned textarea,
-.clean.page #cleaned div {
+.clean.page #clean textarea,
+.clean.page #clean div {
     border: 1px solid black;
     width: 100%;
     font-size: 11px;
@@ -203,7 +203,7 @@ html.js-ready header ul.anon.user-options li:hover {
     margin: 0;
     padding: 33px 0;
 }
-.clean.page #cleaned textarea {
+.clean.page #clean textarea {
     font-family: monospace;
 }
 .clean.page form button {
@@ -215,16 +215,16 @@ html.js-ready header ul.anon.user-options li:hover {
 
 /* Cleaning page for desktop at various sizes */
 @media (min-width: 960px) {
-    .clean.page #cleaned textarea,
-    .clean.page #cleaned div {
+    .clean.page #clean textarea,
+    .clean.page #clean div {
         font-size: 14px;
         padding: 42px 0;
     }
 }
 
 @media (min-width: 1300px) {
-    .clean.page #cleaned textarea,
-    .clean.page #cleaned div {
+    .clean.page #clean textarea,
+    .clean.page #clean div {
         font-size: 18px;
         padding: 54px 0;
     }
@@ -243,7 +243,7 @@ html.js-ready header ul.anon.user-options li:hover {
     }
 
     .clean.page #original,
-    .clean.page #cleaned {
+    .clean.page #clean {
         float: left;
         width: 49%;
     }
@@ -252,24 +252,24 @@ html.js-ready header ul.anon.user-options li:hover {
         margin-right: 1%;
     }
 
-    .clean.page #cleaned textarea,
-    .clean.page #cleaned div {
+    .clean.page #clean textarea,
+    .clean.page #clean div {
         font-size: 12px;
         padding: 36px 0;
     }
 }
 
 @media (min-width: 1750px) {
-    .clean.page #cleaned textarea,
-    .clean.page #cleaned div {
+    .clean.page #clean textarea,
+    .clean.page #clean div {
         font-size: 14px;
         padding: 42px 0;
     }
 }
 
 @media (min-width: 1900px) {
-    .clean.page #cleaned textarea,
-    .clean.page #cleaned div {
+    .clean.page #clean textarea,
+    .clean.page #clean div {
         font-size: 15px;
         padding: 45px 0;
     }
