@@ -18,7 +18,11 @@ th{font-style:normal;font-weight:normal;}
 a{color:#00abd7;text-decoration:none;}
 a:active,a:focus,a:hover{text-decoration:underline;}
 /* Base */
-body { font-family: serif; }
+body {
+    font-family: serif;
+    font-size: 18px;
+    line-height: 27px;
+}
 h1 {
     font-family: "Helvetica Neue", "Arial", sans-serif;
     text-align: center;
@@ -30,7 +34,7 @@ b {
     position: absolute;
     left: -9999px;
 }
-.button {
+.proceed {
     font-family: "Helvetica Neue", "Arial", sans-serif;
     display: block;
     color: blue;
@@ -42,6 +46,11 @@ b {
     border-radius: 5px;
     text-align: center;
 }
+.warning {
+    color: red;
+    text-align: center;
+}
+/* Chrome */
 header {
     font-family: "Helvetica Neue", "Arial", sans-serif;
     color: white;
@@ -127,6 +136,32 @@ html.js-ready header ul.anon.user-options li {
 }
 html.js-ready header ul.anon.user-options li:hover {
     background-color: inherit;
+}
+/* Forms */
+.account #content {
+    width: 90%;
+    margin: 18px auto 0;
+}
+.account form input {
+    display: block;
+    clear: right;
+    width: 100%;
+}
+.account form {
+    margin-top: 18px;
+}
+.account form button {
+    width: auto;
+    margin: 18px 0 0 auto;
+    border: none;
+    font-size: 18px;
+}
+.account.logout form button {
+    margin: 18px auto 0;
+}
+.account form .errorlist {
+    float: right;
+    color: red;
 }
 /* Pages */
 .home h1 img {

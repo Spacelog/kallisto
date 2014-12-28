@@ -11,8 +11,8 @@
 </h1>
 
 {% if request.user.is_authenticated %}
-<p><a class='button' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
+<p><a class='proceed' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
 {% else %}
-<p><a class='button' href='{% url "register" %}'>{% trans "Register to start cleaning" %}</a></p>
+<p><a class='proceed' href='{% url "register" %}'>{% trans "Register to start cleaning" %}</a></p>
 {% endif %}
 {% endblock %}

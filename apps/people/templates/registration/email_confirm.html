@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block head-title-page %}{% trans "Confirm your email address" %}{% endblock %}
+{% block body-class %}account{% endblock %}
 
 {% block content %}
   <h1>{% trans "Confirm your email address" %}</h1>
@@ -18,6 +19,6 @@
   <form id='confirm-email-form' method='POST' action=''>
     {% csrf_token %}
     <input type='hidden' name='next' value='{{ next }}'>
-    <button type='submit'>{% trans "Confirm this email" %}</button>
+    <button class='proceed' type='submit'>{% trans "Confirm this email" %}</button>
   </form>
 {% endblock %}

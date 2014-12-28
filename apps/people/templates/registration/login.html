@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block head-title-page %}{% trans "Login" %}{% endblock %}
+{% block body-class %}account{% endblock %}
 
 {% block content %}
   {% if request.user.is_authenticated %}
@@ -36,7 +37,7 @@
           <a href='{{ password_reset_url }}'>Reset it here</a>.
         {% endblocktrans %}
       </p>
-      <button type='submit'>{% trans "Login" %}</button>
+      <button class='proceed' type='submit'>{% trans "Login" %}</button>
     </form>
   {% endif %}
 {% endblock %}

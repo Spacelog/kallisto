@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block head-title-page %}{% trans "Sign up" %}{% endblock %}
+{% block body-class %}account{% endblock %}
 
 {% block content %}
   <h1>{% trans "Sign up" %}</h1>
@@ -24,6 +25,6 @@
     {{ form.password.errors }}
     {{ form.password }}
     
-    <button type='submit'>{% trans "Sign up" %}</button>
+    <button class='proceed' type='submit'>{% trans "Sign up" %}</button>
   </form>
 {% endblock %}
