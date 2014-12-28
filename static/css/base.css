@@ -20,6 +20,91 @@ a:active,a:focus,a:hover{text-decoration:underline;}
 /* Base */
 body{ font-family: serif; }
 h1 {
-    text-align: center;
     font-family:"Helvetica Neue","Arial",sans-serif;
+}
+header {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    color: white;
+    background-color: #333;
+    padding: 9px;
+    margin: 0 0 22px;
+    font-size: 14px;
+    line-height: 18px;
+}
+header b {
+    position: absolute;
+    left: -9999px;
+}
+header:after,
+header p:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+header h1 {
+    display: block;
+    float: left;
+}
+header p {
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+header p i,
+header p .pages-cleaned {
+    display: block;
+    float: right;
+}
+header p .pages-cleaned {
+    margin-right: 10px;
+    color: lightblue;
+    background-color: blue;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+html.js-ready header p i {
+    color: lightblue;
+}
+html.js-capable header ul.user-options,
+html.js-ready header ul.user-options {
+    clear: both;
+    display: none;
+    margin: 36px -9px 0;
+}
+html.js-ready header ul.user-options li {
+    display: block;
+    color: black;
+    background-color: white;
+    padding: 0 9px 4px;
+}
+html.js-ready header ul.user-options li:hover {
+    color: white;
+    background-color: black;
+}
+html.js-ready header ul.user-options li a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+html.js-ready header ul.anon.user-options {
+    clear: none;
+    display: block;
+    float: right;
+    margin: 0;
+    border: none;
+}
+html.js-ready header ul.anon.user-options:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+html.js-ready header ul.anon.user-options li {
+    float: right;
+    color: lightblue;
+    background-color: transparent;
+    padding: 0 0 0 9px;
+}
+html.js-ready header ul.anon.user-options li:hover {
+    background-color: inherit;
 }

@@ -10,21 +10,39 @@
 
 {% block body-sheath %}
   <header>
-    {% trans "Kallisto powering Spacelog." %}
+    <h1>{% trans "Kallisto powering Spacelog." %}</h1>
     {% if request.user.is_authenticated %}
-      {% blocktrans with name=request.user.name count cleaned=request.user.page_revisions.count %}
-        {{ name }}, you have cleaned 1 page.
-      {% plural %}
-        {{ name }}, you have cleaned {{ cleaned }} pages.
-      {% endblocktrans %}
+      <p>
+        {% blocktrans with name=request.user.name count cleaned=request.user.page_revisions.count %}
+          <i>{{ name }}</i><b>, you have cleaned </b><span class='pages-cleaned'>1</span><b> page.</b>
+        {% plural %}
+          <i>{{ name }}</i><b>, you have cleaned </b><span class='pages-cleaned'>{{ cleaned }}</span><b> pages.</b>
+        {% endblocktrans %}
+      </p>
 
       {% url "logout" as logout_url %}
-      {% url "password_change" as password_change_url %}    
+      {% url "password_change" as password_change_url %}
       {% blocktrans %}
-      <a href='{{ logout_url }}'>Logout</a> or
-      <a href='{{ password_change_url }}'>change password</a>?
+      <ul class='user-options'>
+        <li><a href='{{ logout_url }}'>Logout</a></li>
+        <li><a href='{{ password_change_url }}'>Change password</a></li>
+      </ul>
+      {% endblocktrans %}
+    {% else %}
+      {% url "login" as login_url %}
+      {% url "register" as register_url %}
+      {% blocktrans %}
+      <ul class='anon user-options'>
+        <li><a href='{{ login_url }}'>Login</a></li>
+        <li><a href='{{ register_url }}'>Register</a></li>
+      </ul>
       {% endblocktrans %}
     {% endif %}
   </header>
   {% block content %}{% endblock %}
+{% endblock %}
+
+{% block javascript-libraries %}
+  <script src='http://code.jquery.com/jquery-1.11.2.min.js'></script>
+  <script src='{% static "js/base.js" %}'></script>
 {% endblock %}
