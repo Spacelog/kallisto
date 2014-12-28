@@ -168,3 +168,47 @@ html.js-ready header ul.anon.user-options li:hover {
     display: block;
     margin: 9px auto;
 }
+
+.clean.page h2 {
+    text-align: center;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+.clean.page div + h2 {
+    margin-top: 18px;
+}
+.clean.page #original {
+    width: 90%;
+    padding: 0;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.clean.page #original img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.clean.page #cleaned {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+.clean.page #cleaned textarea,
+.clean.page #cleaned div {
+    border: 1px solid black;
+    width: 100%;
+    font-size: 11px;
+    display: block;
+    margin: 0;
+    padding: 33px 0;
+}
+.clean.page #cleaned textarea {
+    font-family: monospace;
+}
+.clean.page form button {
+    width: auto;
+    margin: 18px 0 18px auto;
+    border: none;
+    font-size: 18px;
+}

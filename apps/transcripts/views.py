@@ -46,7 +46,12 @@ class CleanPage(UpdateView):
         class MakeRevision(forms.Form):
             text = forms.CharField(
                 label=_(u'Cleaned page'),
-                widget=forms.Textarea,
+                widget=forms.Textarea(
+                    attrs={
+                        'cols': 100,
+                        'rows': 64
+                    },
+                ),
             )
 
             def save(self):

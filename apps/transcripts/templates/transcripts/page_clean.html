@@ -2,34 +2,36 @@
 {% load i18n %}
 
 {% block head-title-page %}{% trans "Clean a page" %}{% endblock %}
+{% block body-class %}clean page{% endblock %}
 
 {% block content %}
-  <h1>{% blocktrans with number=page.number mission=page.mission %}Cleaning page {{ number }} of {{ mission }}{% endblocktrans %}</h1>
+  <h1>{% blocktrans with number=page.number mission=page.mission highest=page.mission.pages.last.number %}Cleaning page {{ number }} / {{ highest }} for {{ mission }}{% endblocktrans %}</h1>
 
+  <h2>Original page</h2>
   <div id='original'>
     <img src='{{ page.original.url }}' width='{{ page.original_width }}' height='{{ page.original_height }}' alt='{% trans "Original page scan" %}'>
   </div>
 
-  <div id='cleaned'>
-    <form method='POST' id='clean'>
-      {{ form.non_field_errors }}
-      {% csrf_token %}
-      {% if form.errors %}
-        {# errors most likely due to losing the lock #}
-        {{ form.text.errors }}
-        {{ form.text.label }}
-        {{ form.text }}
-        <button type='submit'>{% trans "Save changes" %}</button>
-      {% elif page.is_locked and page.locked_by == request.user %}
-        {{ form.text.errors }}
-        {{ form.text.label }}
-        {{ form.text }}
-        <button type='submit'>{% trans "Save changes" %}</button>
-      {% elif page.is_locked %}
-        {% blocktrans with locked_by=page.locked_by locked_until=page.locked_until|timeuntil %}Page is locked by {{ locked_by }} for {{ locked_until }}.{% endblocktrans %}
-      {% else %}
-        {% trans "You can't edit this transcript page at the moment." %}
-      {% endif %}
-    </form>
-  </div>
+  <h2>Text version</h2>
+  <form method='POST' id='cleaned'>
+    {{ form.non_field_errors }}
+    {% csrf_token %}
+    {% if form.errors %}
+      {# errors most likely due to losing the lock #}
+      {{ form.text }}
+      {{ form.text.errors }}
+    {% elif page.locked_by == request.user %}
+      {{ form.text }}
+      {{ form.text.errors }}
+    {% elif page.is_locked %}
+      <p class='warning'>{% blocktrans with locked_by=page.locked_by locked_until=page.locked_until|timeuntil %}Page is locked by {{ locked_by }} for {{ locked_until }}.{% endblocktrans %}</p>
+      <div><pre>{{ page.text }}</pre></div>
+    {% else %}
+      <p class='warning'>{% trans "You can't edit this transcript page at the moment." %}</p>
+      <div><pre>{{ page.text }}</pre></div>
+    {% endif %}
+    {% if form.errors or page.locked_by == request.user %}
+      <button class='proceed' type='submit'>{% trans "Save changes" %}</button>
+    {% endif %}
+  </form>
 {% endblock %}
