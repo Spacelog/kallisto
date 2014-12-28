@@ -1,7 +1,12 @@
 {% extends "cape/base.html" %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block head-title-sitename %}Kallisto{% endblock %}
+
+{% block head-css-stylesheet %}
+<link rel='stylesheet' type='text/css' href='{% static "css/base.css" %}'>
+{% endblock %}
 
 {% block body-sheath %}
   <header>
