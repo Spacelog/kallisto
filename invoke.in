@@ -1,0 +1,69 @@
+#!/bin/sh                                                                       
+
+TOPDIR=@TOPDIR@
+PIDFILE=$TOPDIR/gunicorn.pid
+WSGI=@WSGI@
+
+DATABASE_URL=@DATABASE_URL@
+DJANGO_DEBUG=false
+DJANGO_LIVE=true
+LISTEN_PORT=@PORT@
+ALLOWED_HOSTS='@ALLOWED_HOSTS@'
+DJANGO_SECRET_KEY=@DJANGO_SECRET_KEY@
+EMAILS_LIVE=true
+EMAILS_SMTP_HOST=localhost
+EMAILS_SMTP_PORT=25
+
+export DATABASE_URL DJANGO_DEBUG ALLOWED_HOSTS DJANGO_SECRET_KEY EMAILS_LIVE EM\
+AILS_SMTP_HOST EMAILS_SMTP_PORT DJANGO_LIVE
+
+gunicorn_start() {
+    ENV/bin/gunicorn -b 127.0.0.1:$LISTEN_PORT -w 3 -k gevent --max-requests 250 --daemon --pid $PIDFILE --error-logfile $TOPDIR/gunicorn-errors.log --chdir $TOPDIR/deploy/current --preload $WSGI
+}
+
+gunicorn_stop() {
+    [ -f "$PIDFILE" ] || exit 1
+    kill -INT `cat "$PIDFILE"`
+}
+
+shell() {
+    ENV/bin/python manage.py shell
+}
+
+migrate() {
+    ENV/bin/python manage.py migrate
+}
+
+collectstatic() {
+    ENV/bin/python manage.py collectstatic
+}
+
+compilemessages() {
+    ENV/bin/python manage.py compilemessages
+}
+
+case $1 in
+    start)
+        cd $TOPDIR/deploy/current
+        gunicorn_start ;;
+    stop)
+        cd $TOPDIR/deploy/current
+        gunicorn_stop ;;
+    restart|reload)
+        cd $TOPDIR/deploy/current
+        gunicorn_stop
+        gunicorn_start ;;
+    shell)
+        cd $TOPDIR/deploy/current
+        shell() ;;
+    prep)
+        cd $TOPDIR/deploy/next
+        compilemessages
+        collectstatic
+        migrate ;;
+    *)
+        echo "$0: Action '$1' not understood" 1>&2
+        exit 1
+esac
+
+exit 0

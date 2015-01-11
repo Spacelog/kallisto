@@ -1,0 +1,8 @@
+if ( glob service init.d/gunicorn
+     & glob calling-user root
+   )
+   reset
+   no-suppress-args
+   execute invoke
+   quit
+fi
