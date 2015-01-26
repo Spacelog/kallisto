@@ -175,7 +175,7 @@ def setup():
     )
 
     # make our directory structure
-    run("mkdir -m 700 %s/releases" % env.path)
+    run("mkdir -m 711 %s/releases" % env.path)
     run("mkdir -m 700 %s/archives" % env.path)
     # make the userv rc script
     run("mkdir -m 700 %s/.userv" % env.path)
