@@ -41,7 +41,9 @@ collectstatic() {
 }
 
 compilemessages() {
-    ENV/bin/python manage.py compilemessages
+    if test -d locale; then
+        ENV/bin/python manage.py compilemessages
+    fi
 }
 
 case $1 in
