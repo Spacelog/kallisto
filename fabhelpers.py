@@ -14,8 +14,19 @@ import socket
 
 def export_and_upload_tar_from_git():
     """Create an archive from the git remote."""
+    
+    require('release')
 
     export_tar_from_git()
+    upload_tar()
+
+
+def export_and_upload_tar_from_git_local():
+    """Create an archive from the local repo."""
+    
+    require('release')
+
+    export_tar_from_git_local()
     upload_tar()
 
 
