@@ -42,6 +42,7 @@ compatible.
 
 Remote server layout (setup makes these):
 
+media               upload media (shared between all releases)
 archives            tgz archives of code versions
 releases            unpacked, versioned by datetime of fabric invocation
 releases/current    symlink to current version
@@ -182,6 +183,7 @@ def setup():
     )
 
     # make our directory structure
+    run("mkdir -m 711 %s/media" % env.path)
     run("mkdir -m 711 %s/releases" % env.path)
     run("mkdir -m 700 %s/archives" % env.path)
     # make the userv rc script
