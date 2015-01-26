@@ -155,7 +155,7 @@ def setup():
         'database_url',
         'django_secret_key',
         'allowed_hosts',
-        'port',
+        'listen_port',
         used_for="configuring the application.",
     )
 
@@ -183,7 +183,7 @@ def setup():
         ('DATABASE_URL', env.database_url),
         ('DJANGO_SECRET_KEY', env.django_secret_key),
         ('ALLOWED_HOSTS', env.allowed_hosts),
-        ('PORT', env.port),
+        ('PORT', env.listen_port),
     )
 
     tmpfile = tempfile.NamedTemporaryFile(delete=False)
