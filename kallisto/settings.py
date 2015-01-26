@@ -73,9 +73,9 @@ else:
 
 # This makes no sense under development, but is important when live.
 if 'true' == os.environ.get('DJANGO_LIVE'):
-    SESSION_COOKIE_SECURE = True
+    #SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
-    CSRF_COOKIE_SECURE = True
+    #CSRF_COOKIE_SECURE = True
     CSRF_COOKIE_HTTPONLY = True
 
 
