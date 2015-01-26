@@ -35,7 +35,7 @@ def export_tar_from_git():
 
     require('release', 'remote', 'branch')
 
-    local("git archive --format=tar --prefix=%(release)s/ --remote=%(remote)s %(branch)s | gzip -c > %(release)s.tar.gz" % {
+    local("git archive --format=tar --prefix=%(release)s/ --remote='%(remote)s' %(branch)s | gzip -c > %(release)s.tar.gz" % {
         'release': env.release,
         'remote': env.remote,
         'branch': env.branch,
