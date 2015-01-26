@@ -164,11 +164,11 @@ def setup():
     )
 
     # make our directory structure
-    run("mkdir %s/releases" % env.path)
-    run("mkdir %s/archives" % env.path)
+    run("mkdir -m 700 %s/releases" % env.path)
+    run("mkdir -m 700 %s/archives" % env.path)
     # make the userv rc script
-    run("mkdir %s/.userv" % env.path)
-    put("userv.rc.in", "%s/.userv/rc" % env.path)
+    run("mkdir -m 700 %s/.userv" % env.path)
+    put("userv.rc.in", "%s/.userv/rc" % env.path, mode=0600)
     # and the script it points to
     # @TOPDIR@ -> env.path
     # @WSGI@ -> $(env.project).wsgi (python path to WSGI app)
