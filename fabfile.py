@@ -26,8 +26,9 @@ Getting started:
 
 * with a remote user & host you have access to
 $ fab -H HOST setup
+$ fab -H host setup:restart=false
 
-* to put the latest master live
+* subsequently, to put the latest master live
 $ fab -H HOST deploy
 
 * if something goes wrong, roll back to a specific version
@@ -36,9 +37,6 @@ $ fab -H switch_to:version=<VERS> restart_appserver
 deploy will apply migrations; switch_to will not. Also, migrations are
 applied while the site is still running, so should be backwards
 compatible.
-
-Note that the very first time, deploy won't work fully, because the
-invoke restart command won't have a gunicorn to kill.
 
 (deploy also runs compilestatic and compilemessages)
 
@@ -73,10 +71,12 @@ env.user = 'kallisto'
 env.path = '/home/%s' % env.user
 
 
-def deploy():
+def deploy(restart='true'):
     """
     Deploy the latest version of the site to the servers.
     """
+    
+    restart = (restart in ('true', 'True'))
 
     # installs any required third party modules, compiles static files
     # and messages, migrates the database and then restarts the
@@ -87,7 +87,10 @@ def deploy():
     fabhelpers.export_and_upload_tar_from_git_local() # github doesn't support upload-archive
     prep_release(env.release)
     switch_to(env.release)
-    restart_appserver()
+    if restart:
+        restart_appserver()
+    else:
+        invoke(command="start")
 
     
 def switch_to(version):
@@ -149,6 +152,14 @@ def restart_appserver():
     require('hosts')
     
     run("invoke restart")
+
+
+def invoke(command):
+    """Run an init command (or shell or prep) via the invoker."""
+    
+    require('hosts')
+    
+    run("invoke %s" % command)
 
     
 def setup():
