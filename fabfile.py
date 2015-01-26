@@ -55,6 +55,7 @@ invoke              environment-setting invocation script (acts both
 
 from fabric.api import *
 from fabric.contrib.files import exists
+import os
 import tempfile
 import time
 
@@ -160,8 +161,8 @@ def setup():
     )
 
     # make our directory structure
-    run("mkdir $s/releases" % env.path)
-    run("mkdir $s/archives" % env.path)
+    run("mkdir %s/releases" % env.path)
+    run("mkdir %s/archives" % env.path)
     # make the userv rc script
     run("mkdir %s/.userv" % env.path)
     put("userv.rc.in", "%s/.userv/rc" % env.path)
@@ -191,15 +192,15 @@ def setup():
         "s/@%(var)s@/%(subst)s/g; " % {
             'var': k,
             'subst': v.replace("'", r"\'").replace("/", r"\/"),
-        } for k, v in substititions
+        } for k, v in substitutions
     )
     try:
         local(
-            "sed < invoke.in > $(tmp_fname)s '%(commands)'" % {
+            "sed < invoke.in > %(tmp_fname)s '%(commands)s'" % {
                 'tmp_fname': tmpfile.name,
                 'commands': commands,
             }
         )
-        put(tmpfile.name, "%(path)s/invoke" % env.path)
+        put(tmpfile.name, "%s/invoke" % env.path, mode=0700)
     finally:
         os.remove(tmpfile.name)

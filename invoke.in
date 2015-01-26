@@ -18,7 +18,7 @@ export DATABASE_URL DJANGO_DEBUG ALLOWED_HOSTS DJANGO_SECRET_KEY EMAILS_LIVE EM\
 AILS_SMTP_HOST EMAILS_SMTP_PORT DJANGO_LIVE
 
 gunicorn_start() {
-    ENV/bin/gunicorn -b 127.0.0.1:$LISTEN_PORT -w 3 -k gevent --max-requests 250 --daemon --pid $PIDFILE --error-logfile $TOPDIR/gunicorn-errors.log --chdir $TOPDIR/deploy/current --preload $WSGI
+    ENV/bin/gunicorn -b 127.0.0.1:$LISTEN_PORT -w 3 -k gevent --max-requests 250 --daemon --pid $PIDFILE --error-logfile $TOPDIR/gunicorn-errors.log --chdir $TOPDIR/releases/current --preload $WSGI
 }
 
 gunicorn_stop() {
@@ -44,20 +44,20 @@ compilemessages() {
 
 case $1 in
     start)
-        cd $TOPDIR/deploy/current
+        cd $TOPDIR/releases/current
         gunicorn_start ;;
     stop)
-        cd $TOPDIR/deploy/current
+        cd $TOPDIR/releases/current
         gunicorn_stop ;;
     restart|reload)
-        cd $TOPDIR/deploy/current
+        cd $TOPDIR/releases/current
         gunicorn_stop
         gunicorn_start ;;
     shell)
-        cd $TOPDIR/deploy/current
-        shell() ;;
+        cd $TOPDIR/releases/current
+        shell ;;
     prep)
-        cd $TOPDIR/deploy/next
+        cd $TOPDIR/releases/next
         compilemessages
         collectstatic
         migrate ;;
