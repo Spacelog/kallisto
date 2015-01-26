@@ -16,11 +16,12 @@ class MissionAdmin(admin.ModelAdmin):
     )
 
     def n_pages(self, obj):
-        if obj.pages.first().number == 1:
-            return obj.pages.count()
+        c = obj.pages.count()
+        if c == 0 or obj.pages.first().number == 1:
+            return c
         else:
             return _(u"%i (pp%i-%i)") % (
-                obj.pages.count(),
+                c,
                 obj.pages.first().number,
                 obj.pages.last().number
             )
