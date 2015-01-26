@@ -5,6 +5,7 @@
 {% block body-class %}home{% endblock %}
 
 {% block content %}
+{% if mission %}
 <h1>
   {% blocktrans with name=mission.name %}<b>We are working on </b>{{ name }}{% endblocktrans %}
   <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}from {{ start }} to {{ end }}{% endblocktrans %}'>
@@ -14,5 +15,9 @@
 <p><a class='proceed' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
 {% else %}
 <p><a class='proceed' href='{% url "register" %}'>{% trans "Register to start cleaning" %}</a></p>
+{% endif %}
+
+{% else %}
+<h1>{% trans "We're not working on any missions right now." %}</h1>
 {% endif %}
 {% endblock %}
