@@ -35,7 +35,7 @@ migrate() {
 }
 
 collectstatic() {
-    ENV/bin/python manage.py collectstatic
+    ENV/bin/python manage.py collectstatic --noinput
 }
 
 compilemessages() {
