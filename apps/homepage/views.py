@@ -6,11 +6,11 @@ class Homepage(TemplateView):
     template_name = 'homepage/home.html'
 
     def get_context_data(self, **kwargs):
-        kwargs.update(
-            {
-                'mission': Mission.objects.current(),
-            }
-        )
+        try:
+            kwargs['mission'] = Mission.objects.current()
+        except IndexError:
+            # no missions in the system!
+            pass
         return super(Homepage, self).get_context_data(**kwargs)
 
 
