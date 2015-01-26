@@ -37,6 +37,9 @@ deploy will apply migrations; switch_to will not. Also, migrations are
 applied while the site is still running, so should be backwards
 compatible.
 
+Note that the very first time, deploy won't work fully, because the
+invoke restart command won't have a gunicorn to kill.
+
 (deploy also runs compilestatic and compilemessages)
 
 Remote server layout (setup makes these):
