@@ -118,16 +118,23 @@ def prep_release(version):
 
     require('hosts')
     
+    current_path = os.path.join(env.path, 'releases', 'current')
     next_path = os.path.join(env.path, 'releases', 'next')
     if exists(next_path):
         run('rm %s' % next_path)
     run('ln -s %s %s' % (version, next_path))
 
     run(
-        "cd %(path)s/releases/next; "
-        "virtualenv ENV; "
+        "cd %(next_path)s; "
+        "if [ -d %(current_path)s/ENV ]; then "
+        "    cp -a %(current_path)s/ENV %(next_path)s/ENV; "
+        "else "
+        "    virtualenv ENV; "
+        "fi; "
         "ENV/bin/pip install -r requirements/live.txt" % {
             'path': env.path,
+            'next_path': next_path,
+            'current_path': current_path,
             'release': env.release
         }
     )
