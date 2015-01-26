@@ -119,7 +119,7 @@ def prep_release(version):
     run(
         "cd %(path)s/releases/next; "
         "virtualenv ENV; "
-        "ENV/bin/pip install -E ENV -r requirements.txt" % {
+        "ENV/bin/pip install -r requirements/live.txt" % {
             'path': env.path,
             'release': env.release
         }

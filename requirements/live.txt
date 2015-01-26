@@ -1,0 +1,4 @@
+-f base.txt
+
+gunicorn==19.1.1
+gevent==1.0.1

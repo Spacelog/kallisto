@@ -8,7 +8,7 @@ This is very early days, but:
 
  * Ubuntu (14.04) + postgresql-9.3 + imagemagick + ghostscript + libpng12-0
  * Create a database called "kallisto" accessible by "user" with no password
- * Django 1.7 app; `pip install -r requirements.txt` into a virtualenv, then `python manage.py migrate` should get you started
+ * Django 1.7 app; `pip install -r requirements/dev.txt` into a virtualenv, then `python manage.py migrate` should get you started
  * You need to make a mission, which must include a mission patch (because we want things to look pretty!)
  * `python manage.py import_pages` will import the text and PNG pages; see its help for how (and how to generate them)
  * run tests with `python manage.py collectstatic --noinput` followed by `python manage.py test` (the test rig doesn't look in source locations for static files, so you have to do the static collection deploy step first: note that if you change settings to eg put static files on S3 then this isn't a good solution)
