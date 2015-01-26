@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_cape',
+    'exceptional_middleware',
 )
 
 MIDDLEWARE_CLASSES = (
