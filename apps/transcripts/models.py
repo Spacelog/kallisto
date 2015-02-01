@@ -135,6 +135,12 @@ class Mission(models.Model):
             return locked_pages[0]
 
         return None
+
+    def approved_pages(self):
+        return self.pages.filter(approved=True)
+
+    def cleaned_pages(self):
+        return self.pages.filter(revisions__id__isnull=False)
     
     def __unicode__(self):
         return self.name

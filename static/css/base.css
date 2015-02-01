@@ -19,7 +19,7 @@ a{color:#00abd7;text-decoration:none;}
 a:active,a:focus,a:hover{text-decoration:underline;}
 /* Base */
 body {
-    font-family: serif;
+    font-family: Georgia, serif;
     font-size: 18px;
     line-height: 27px;
 }
@@ -164,9 +164,16 @@ html.js-ready header ul.anon.user-options li:hover {
     color: red;
 }
 /* Pages */
+.home #content {
+    max-width: 900px;
+    margin: 0 auto;
+}
 .home h1 img {
     display: block;
     margin: 9px auto;
+}
+.home .status {
+    text-align: center;
 }
 
 .clean.page #content {

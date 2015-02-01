@@ -10,6 +10,7 @@
   {% blocktrans with name=mission.name %}<b>We are working on </b>{{ name }}{% endblocktrans %}
   <img src='{{ mission.patch.url }}' width='{{ mission.patch_width }}' height='{{ mission.patch_height }}' alt='{% blocktrans with start=mission.start end=mission.end %}from {{ start }} to {{ end }}{% endblocktrans %}'>
 </h1>
+<p class='status'>Together we've cleaned or part-cleaned {{ mission.cleaned_pages.count }} out of {{ mission.pages.count }} pages of this mission; {{ mission.approved_pages.count }} pages have been finished.</p>
 
 {% if request.user.is_authenticated %}
 <p><a class='proceed' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
