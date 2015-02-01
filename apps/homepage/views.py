@@ -12,9 +12,13 @@ class Homepage(TemplateView):
         except IndexError:
             # no missions in the system!
             pass
-        kwargs['leaderboard_overall'] = User.objects.all().order_by(
-            '-pages_cleaned',
-        )
+        kwargs['leaderboard_overall'] = User.objects.raw(
+            """
+            SELECT id, name, pages_cleaned, pages_approved
+            FROM people_user
+            ORDER BY (2 * pages_cleaned + pages_approved) DESC
+            """
+        )[:10]
         return super(Homepage, self).get_context_data(**kwargs)
 
 
