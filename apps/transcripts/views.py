@@ -49,7 +49,7 @@ class CleanPage(UpdateView):
                 widget=forms.Textarea(
                     attrs={
                         'cols': 100,
-                        'rows': 64
+                        'rows': 35
                     },
                 ),
             )
