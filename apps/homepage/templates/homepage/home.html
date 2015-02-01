@@ -26,7 +26,17 @@
 
 <ol class='leaderboard'>
   {% for user in leaderboard_overall %}
-    <li>{{ user.name }}: {{ user.pages_cleaned }} page{{ user.pages_cleaned|pluralize }}</li>
+    <li>{{ user.name }}:
+      {% if user.pages_cleaned %}
+        {{ user.pages_cleaned }} page{{ user.pages_cleaned|pluralize }} cleaned
+        {% if user.pages_approved %}
+          + {{ user.pages_approved }} approved
+        {% endif %}
+      {% elif users.pages_approved %}
+        {{ user.pages_approved }} page{{ user.pages_approved|pluralize }}
+        approved
+      {% endif %}
+    </li>
   {% endfor %}
 </ol>
 {% endblock %}
