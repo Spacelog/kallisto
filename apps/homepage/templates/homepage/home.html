@@ -21,4 +21,12 @@
 {% else %}
 <h1>{% trans "We're not working on any missions right now." %}</h1>
 {% endif %}
+
+<h1>Leaderboard</h1>
+
+<ol class='leaderboard'>
+  {% for user in leaderboard_overall %}
+    <li>{{ user.name }}: {{ user.pages_cleaned }} page{{ user.pages_cleaned|pluralize }}</li>
+  {% endfor %}
+</ol>
 {% endblock %}

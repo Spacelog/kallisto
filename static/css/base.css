@@ -175,6 +175,19 @@ html.js-ready header ul.anon.user-options li:hover {
 .home .status {
     text-align: center;
 }
+.home ol.leaderboard {
+    width: 90%;
+    margin: 0 auto;
+}
+@media (min-width: 640px) {
+    .home ol.leaderboard {
+        width: 40%;
+        margin: 0 auto;
+    }
+}
+.home ol.leaderboard li {
+    list-style: decimal inside;
+}
 
 .clean.page #content {
     margin: 0 auto;
