@@ -169,6 +169,10 @@ html.js-ready header ul.anon.user-options li:hover {
     margin: 9px auto;
 }
 
+.clean.page #content {
+    margin: 0 auto;
+    max-width: 1900px;
+}
 .clean.page h2 {
     text-align: center;
     font-family: "Helvetica Neue", "Arial", sans-serif;
@@ -205,6 +209,7 @@ html.js-ready header ul.anon.user-options li:hover {
 }
 .clean.page #clean textarea {
     font-family: monospace;
+    line-height: 175%;
 }
 .clean.page form button {
     width: auto;
@@ -223,14 +228,6 @@ html.js-ready header ul.anon.user-options li:hover {
 }
 
 @media (min-width: 1300px) {
-    .clean.page #clean textarea,
-    .clean.page #clean div {
-        font-size: 18px;
-        padding: 54px 0;
-    }
-}
-
-@media (min-width: 1500px) {
     .clean.page h2 {
         position: absolute;
         left: -9999px;
@@ -254,7 +251,7 @@ html.js-ready header ul.anon.user-options li:hover {
 
     .clean.page #clean textarea,
     .clean.page #clean div {
-        font-size: 12px;
+        font-size: 14px;
         padding: 36px 0;
     }
 }
@@ -262,7 +259,7 @@ html.js-ready header ul.anon.user-options li:hover {
 @media (min-width: 1750px) {
     .clean.page #clean textarea,
     .clean.page #clean div {
-        font-size: 14px;
+        font-size: 15px;
         padding: 42px 0;
     }
 }
@@ -270,7 +267,7 @@ html.js-ready header ul.anon.user-options li:hover {
 @media (min-width: 1900px) {
     .clean.page #clean textarea,
     .clean.page #clean div {
-        font-size: 15px;
+        font-size: 18px;
         padding: 45px 0;
     }
 }
