@@ -38,13 +38,15 @@ class RevisionInline(admin.StackedInline):
 class PageAdmin(admin.ModelAdmin):
     model = Page
     list_display = (
-        'id',
         'mission',
         'number',
         'approved',
         'locked_by',
         'locked_for',
         'n_revisions'
+    )
+    list_display_links = (
+        'number',
     )
     inlines = [ RevisionInline, ]
     readonly_fields = [
@@ -53,6 +55,10 @@ class PageAdmin(admin.ModelAdmin):
         'locked_for',
         'n_revisions',
     ]
+    list_filter = (
+        'mission',
+        'approved',
+    )
 
     def locked_for(self, obj):
         if obj.locked_until is None:
