@@ -10,7 +10,8 @@
 
 {% block body-sheath %}
   <header>
-    <h1>{% trans "Kallisto powering Spacelog." %}</h1>
+    {% url "homepage" as homepage_url %}
+    <h1>{% blocktrans %}<a href='{{ homepage_url }}'>Kallisto</a> powering <a href='http://spacelog.org/' target='_blank'>Spacelog</a>.{% endblocktrans %}</h1>
     {% if request.user.is_authenticated %}
       <p>
         {% blocktrans with name=request.user.name count cleaned=request.user.page_revisions.count %}
