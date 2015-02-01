@@ -32,7 +32,7 @@
         {% if user.pages_approved %}
           + {{ user.pages_approved }} approved
         {% endif %}
-      {% elif users.pages_approved %}
+      {% elif user.pages_approved %}
         {{ user.pages_approved }} page{{ user.pages_approved|pluralize }}
         approved
       {% endif %}
