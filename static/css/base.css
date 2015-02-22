@@ -50,6 +50,9 @@ b {
     color: red;
     text-align: center;
 }
+.info {
+    font-style: italic;
+}
 /* Chrome */
 header {
     font-family: "Helvetica Neue", "Arial", sans-serif;
