@@ -163,10 +163,13 @@ html.js-ready header ul.anon.user-options li:hover {
     float: right;
     color: red;
 }
-/* Pages */
+/* Homepage */
 .home #content {
     max-width: 900px;
     margin: 0 auto;
+}
+.home #content a {
+    color: blue;
 }
 .home h1 img {
     display: block;
@@ -219,9 +222,15 @@ html.js-ready header ul.anon.user-options li:hover {
     list-style: decimal inside;
 }
 
+/* Cleaning page */
 .clean.page #content {
     margin: 0 auto;
     max-width: 1900px;
+}
+.clean.page #content h1 a {
+    color: blue;
+    font-size: 18px;
+    font-style: italic;
 }
 .clean.page h2 {
     text-align: center;

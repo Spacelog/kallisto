@@ -5,7 +5,7 @@
 {% block body-class %}clean page{% endblock %}
 
 {% block content %}
-  <h1>{% blocktrans with number=page.number mission=page.mission highest=page.mission.pages.last.number %}Cleaning page {{ number }} / {{ highest }} for {{ mission }}{% endblocktrans %}</h1>
+  <h1>{% blocktrans with number=page.number mission=page.mission highest=page.mission.pages.last.number %}Cleaning page {{ number }} / {{ highest }} for {{ mission }}{% endblocktrans %} <span><a target='mission-wiki' href='{{ page.mission.wiki }}'>({% trans "mission wiki" %})</a></span></h1>
 
   <h2>Original page</h2>
   <div id='original'>

@@ -50,6 +50,11 @@ class Mission(models.Model):
         default=True,
         help_text=_('Are we currently cleaning this mission?'),
     )
+    wiki = models.URLField(
+        null=True,
+        blank=True,
+        help_text=_('URL of wiki page for useful notes.'),
+    )
 
     objects = MissionManager()
 
