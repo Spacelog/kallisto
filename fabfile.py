@@ -58,7 +58,6 @@ invoke              environment-setting invocation script (acts both
 from fabric.api import *
 from fabric.contrib.files import exists
 import os
-import tempfile
 import time
 
 import fabhelpers
@@ -92,6 +91,16 @@ def deploy(restart='true'):
         restart_appserver()
     else:
         invoke(command="start")
+
+    fabhelpers.substitute_and_put(
+        "crontab.in",
+        "%s/crontab" % env.path,
+        (
+            ('TOPDIR', env.path),
+        ),
+        mode=0700,
+    )
+    run("crontab < %(path)s/crontab" % { 'path': env.path })
 
     
 def switch_to(version):
@@ -210,20 +219,9 @@ def setup():
         ('PORT', env.listen_port),
     )
 
-    tmpfile = tempfile.NamedTemporaryFile(delete=False)
-    commands = '; '.join(
-        "s/@%(var)s@/%(subst)s/g; " % {
-            'var': k,
-            'subst': v.replace("'", r"\'").replace("/", r"\/"),
-        } for k, v in substitutions
+    fabhelpers.substitute_and_put(
+        "invoke.in",
+        "%s/invoke" % env.path,
+        substitutions,
+        mode=0700,
     )
-    try:
-        local(
-            "sed < invoke.in > %(tmp_fname)s '%(commands)s'" % {
-                'tmp_fname': tmpfile.name,
-                'commands': commands,
-            }
-        )
-        put(tmpfile.name, "%s/invoke" % env.path, mode=0700)
-    finally:
-        os.remove(tmpfile.name)

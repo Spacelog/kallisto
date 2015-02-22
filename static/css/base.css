@@ -175,17 +175,47 @@ html.js-ready header ul.anon.user-options li:hover {
 .home .status {
     text-align: center;
 }
-.home ol.leaderboard {
+.home .leaderboards h2 {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    text-align: center;
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 3px;
+}
+.home .leaderboard ol {
     width: 90%;
     margin: 0 auto;
 }
 @media (min-width: 640px) {
-    .home ol.leaderboard {
-        width: 40%;
-        margin: 0 auto;
+    .home .leaderboards {
+        width: 90%;
+        margin: 36px auto 0;
+    }
+    .home .leaderboards h1 {
+        margin-bottom: 24px; /* 18px + 6px (line-height - font-size) */
+    }
+    .home .leaderboards h2 {
+        text-align: left;
+    }
+    .home .leaderboards:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    .home .leaderboard {
+        float: left;
+        box-sizing: border-box;
+        width: 45%;
+        margin-right: 10%;
+    }
+    .home .leaderboard + .leaderboard {
+        margin-right: 0;
+    }
+    .home .leaderboard ol {
+        width: 100%;
     }
 }
-.home ol.leaderboard li {
+.home .leaderboard ol li {
     list-style: decimal inside;
 }
 

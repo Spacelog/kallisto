@@ -1,0 +1,2 @@
+# crontab for typical Kallisto deployment
+*/5 * * * * @TOPDIR@/invoke decay_scores

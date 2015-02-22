@@ -9,6 +9,7 @@ from fabric.contrib.files import exists
 import os
 import os.path
 import socket
+import tempfile
 
 ### SOURCE CONTROL EXPORT & UPLOAD
 
@@ -69,3 +70,27 @@ def upload_tar():
         },
     )
     local('rm %s.tar.gz' % env.release)
+
+
+### Process templated file to remote
+
+def substitute_and_put(local_fname, remote_fname, substitutions, **kwargs):
+    tmpfile = tempfile.NamedTemporaryFile(delete=False)
+    commands = '; '.join(
+        "s/@%(var)s@/%(subst)s/g; " % {
+            'var': k,
+            'subst': v.replace("'", r"\'").replace("/", r"\/"),
+        } for k, v in substitutions
+    )
+    try:
+        local(
+            "sed < %(local)s > %(tmp_fname)s '%(commands)s'" % {
+                'local': local_fname,
+                'tmp_fname': tmpfile.name,
+                'commands': commands,
+            }
+        )
+        put(tmpfile.name, remote_fname, **kwargs)
+    finally:
+        os.remove(tmpfile.name)
+    

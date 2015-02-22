@@ -67,12 +67,11 @@ case $1 in
         collectstatic
         migrate ;;
     import)
-        cd $TOPDIR/releases/current
         shift
-        ENV/bin/python manage.py import_pages $* ;;
+        $TOPDIR/releases/currentENV/bin/python $TOPDIR/releases/currentmanage.py import_pages $* ;;
     *)
-        echo "$0: Action '$1' not understood" 1>&2
-        exit 1
+        cd $TOPDIR/releases/current
+        ENV/bin/python manage.py $* ;;
 esac
 
 exit 0

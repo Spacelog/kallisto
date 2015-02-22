@@ -22,11 +22,27 @@
 <h1>{% trans "We're not working on any missions right now." %}</h1>
 {% endif %}
 
-<h1>Leaderboard</h1>
+<div class='leaderboards'>
+<h1>Leaderboards</h1>
 
-<ol class='leaderboard'>
-  {% for user in leaderboard_overall %}
+<section class='leaderboard'>
+  <h2>Recently</h2>
+
+  <ol>
+    {% for user in leaderboard_recent %}
     <li>{{ user.name }}: {{ user.pages_cleaned|add:user.pages_approved }} cleaned.</li>
-  {% endfor %}
-</ol>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class='leaderboard'>
+  <h2>All time</h2>
+
+  <ol>
+    {% for user in leaderboard_overall %}
+    <li>{{ user.name }}: {{ user.pages_cleaned|add:user.pages_approved }} cleaned.</li>
+    {% endfor %}
+  </ol>
+</section>
+</div>
 {% endblock %}

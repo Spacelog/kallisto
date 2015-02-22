@@ -218,12 +218,14 @@ class Page(models.Model):
                     pk=user.pk,
                 ).update(
                     pages_approved=F('pages_approved')+1,
+                    score=F('score')+1,
                 )
             else:
                 User.objects.filter(
                     pk=user.pk,
                 ).update(
                     pages_cleaned=F('pages_cleaned')+1,
+                    score=F('score')+1,
                 )
             # and unlock the page
             unlocked = Page.objects.filter(

@@ -89,7 +89,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = UserCreationForm
 
     fieldsets = (
-        (None, {'fields': (('email', 'password', 'name',), ('pages_cleaned', 'pages_approved'))}),
+        (None, {'fields': (('email', 'password', 'name',), ('pages_cleaned', 'pages_approved', 'score'))}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -114,6 +114,7 @@ class CustomUserAdmin(UserAdmin):
         'email',
         'pages_cleaned',
         'pages_approved',
+        'score',
         'is_staff',
         'date_joined',
     )

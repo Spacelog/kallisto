@@ -61,6 +61,10 @@ class User(user_models.AbstractBaseUser, user_models.PermissionsMixin):
         default=0,
         help_text=_('Number of pages approved as correct.'),
     )
+    score = models.FloatField(
+        default=0,
+        help_text=_('Current score; decays over time (see decay_scores command).'),
+    )
 
     objects = UserManager()
     USERNAME_FIELD = 'email'
