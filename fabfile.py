@@ -84,7 +84,8 @@ def deploy(restart='true'):
     
     env.release = time.strftime('%Y-%m-%dT%H.%M.%S')
 
-    fabhelpers.export_and_upload_tar_from_git_local() # github doesn't support upload-archive
+    # github doesn't support upload-archive, so work from local repo
+    fabhelpers.export_and_upload_tar_from_git_local()
     prep_release(env.release)
     switch_to(env.release)
     if restart:
