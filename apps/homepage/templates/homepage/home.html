@@ -14,6 +14,11 @@
 
 {% if request.user.is_authenticated %}
 <p><a class='proceed' href='{% url "mission-clean-next" slug=mission.short_name %}'>{% trans "Start cleaning" %}</a></p>
+
+{% if request.user.page_revisions.count == mission.pages.count %}
+<p class='info'>If you keep getting back to this page, it means you've worked on all the pages in the current mission. We'll announce the next one on <a href='https://groups.google.com/forum/#!forum/spacelog'>the mailing list</a> and on <a href='https://twitter.com/spacelog'>Twitter</a> as soon as we're ready.</p>
+{% endif %}
+
 {% else %}
 <p><a class='proceed' href='{% url "register" %}'>{% trans "Register to start cleaning" %}</a></p>
 {% endif %}
