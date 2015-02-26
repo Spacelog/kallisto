@@ -152,6 +152,7 @@ html.js-ready header ul.anon.user-options li:hover {
 }
 .account form {
     margin-top: 18px;
+    margin-bottom: 18px;
 }
 .account form button {
     width: auto;
