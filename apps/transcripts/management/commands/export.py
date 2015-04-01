@@ -1,11 +1,10 @@
 import errno
-import json
 import os
 
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ObjectDoesNotExist
 
-from apps.transcripts.models import Mission
+from apps.transcripts.models import Mission, MissionExporter
 
 class Command(BaseCommand):
     help = """Export a cleaned transcript and basic metadata file for use in
@@ -27,40 +26,17 @@ If a transcript name isn't passed, the default is TEC."""
         export_dir = args[1]
         self._mkdir(os.path.join(export_dir, "transcripts"))
 
-        main_transcript = "TEC"
+        main_transcript_name = "TEC"
         if len(args) > 2:
-            main_transcript = args[2]
+            main_transcript_name = args[2]
 
-        cleaners = set()
-        with open(os.path.join(export_dir, "transcripts", main_transcript), "w") as f:
-            for page in mission.pages.all():
-                f.write("\tPage %d\n" % page.number)
-                f.write("\tApproved? %s\n" % page.approved)
-                f.write(page.text)
-                f.write("\n")
+        exporter = MissionExporter(mission, main_transcript_name)
 
-                for revision in page.revisions.all():
-                    cleaners.add(revision.by.name)
+        with open(os.path.join(export_dir, exporter.main_transcript_path()), "w") as f:
+            f.write(exporter.main_transcript())
 
-        cleaners = list(cleaners)
-        cleaners.sort()
-        upper_title, lower_title = mission.name.split(" ", 1)
-        meta = {
-            "name": mission.short_name.lower(),
-            "incomplete": True,
-            "subdomains": [mission.short_name.lower()],
-            "copy": {
-                "title": mission.name,
-                "upper_title": upper_title,
-                "lower_title": lower_title,
-                "cleaners": cleaners,
-            },
-            "main_transcript": "%s/%s" % (mission.short_name.lower(), main_transcript),
-            "utc_launch_time": mission.start.isoformat(),
-        }
-        with open(os.path.join(export_dir, "transcripts", "_meta"), "w") as f:
-            f.write(json.dumps(meta, indent=4))
-            f.write("\n")
+        with open(os.path.join(export_dir, exporter.meta_path()), "w") as f:
+            f.write(exporter.meta())
 
     def _mkdir(self, path):
         try:
