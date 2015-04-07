@@ -20,7 +20,7 @@ urlpatterns = patterns(
     # Logout and (some) password management -- only the things we
     # have to modify from the built-in behaviour.
     url(r'^account/logout/$', 'apps.people.views.logout', name='logout'),
-    url(r'^account/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', 'apps.people.views.password_reset_confirm', { 'post_reset_redirect': '/' }, name='password_reset_confirm'),
+    url(r'^account/password/reset/(?P<uid>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', 'apps.people.views.password_reset_confirm', { 'post_reset_redirect': '/' }, name='password_reset_confirm'),
 ) + patterns(
     # And the rest of registration/account stuff.
     'django.contrib.auth.views',
