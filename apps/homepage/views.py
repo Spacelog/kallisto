@@ -31,4 +31,9 @@ class Homepage(TemplateView):
         return super(Homepage, self).get_context_data(**kwargs)
 
 
+class Help(TemplateView):
+    template_name = 'homepage/help.html'
+
+
 homepage = Homepage.as_view()
+help = Help.as_view()

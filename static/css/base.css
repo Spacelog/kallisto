@@ -94,6 +94,13 @@ header p .pages-cleaned {
     padding: 0 5px;
     border-radius: 5px;
 }
+header .help {
+    text-transform: capitalize;
+}
+header .help::before {
+    content: '•';
+    padding: 0 0.75em;
+}
 html.js-ready header p i {
     color: lightblue;
 }
@@ -228,6 +235,37 @@ html.js-ready header ul.anon.user-options li:hover {
 }
 .home .leaderboard ol li {
     list-style: decimal inside;
+}
+
+/* Help page */
+.help #content {
+    max-width: 900px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+.help #content p,
+.help #content ul,
+.help #content ol,
+.help #content pre {
+    margin-bottom: 1em;
+}
+.help #content ul,
+.help #content ol,
+.help #content pre {
+    margin-left: 2em;
+}
+.help #content ul li {
+    list-style: circle;
+}
+.help #content ol li {
+    list-style: decimal;
+}
+.help #content li {
+    margin-bottom: 0.5em;
+}
+.help #content h2 {
+    font-weight: bold;
+    margin: 2em 0 1em;
 }
 
 /* Cleaning page */

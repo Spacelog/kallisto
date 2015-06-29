@@ -7,6 +7,7 @@ import exceptional_middleware
 urlpatterns = patterns(
     '',
     url(r'^$', 'apps.homepage.views.homepage', name='homepage'),
+    url(r'^help$', 'apps.homepage.views.help', name='help'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(?P<slug>[0-9A-Za-z]+)/$', 'apps.transcripts.views.clean', name='mission-clean-next'),
     url(r'^(?P<slug>[0-9A-Za-z]+)/(?P<page>[0-9]+)/$', 'apps.transcripts.views.page', name='mission-page'),

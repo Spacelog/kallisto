@@ -12,8 +12,19 @@
   <header>
     {% url "homepage" as homepage_url %}
     <h1>{% blocktrans %}<a href='{{ homepage_url }}'>Kallisto</a> powering <a href='http://spacelog.org/' target='_blank'>Spacelog</a>.{% endblocktrans %}</h1>
+
+    {% spaceless %}
+      <p class='help'>
+        <a href='{% url "help" %}'>
+          {% blocktrans %}
+            <b>Get </b>help<b> using Kallisto</b>
+          {% endblocktrans %}
+        </a>
+      </p>
+    {% endspaceless %}
+
     {% if request.user.is_authenticated %}
-      <p>
+      <p class='user'>
         {% blocktrans with name=request.user.name count cleaned=request.user.page_revisions.count %}
           <i>{{ name }}</i><b>, you have cleaned </b><span class='pages-cleaned'>1</span><b> page.</b>
         {% plural %}
