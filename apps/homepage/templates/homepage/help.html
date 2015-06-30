@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title-page %}{% trans "Help" %}{% endblock %}
+{% block body-class %}help{% endblock %}
+
+{% block content %}
+  <h1>{% blocktrans %}Help with using Kallisto{% endblocktrans %}</h1>
+
+  <h2>{% blocktrans %}What is Kallisto?{% endblocktrans %}</h2>
+  <p>{% blocktrans with spacelog_url='http://spacelog.org' %}
+    Kallisto is a collaborative tool for cleaning up transcripts of space
+    missions so that they can be used on
+    <a href='{{ spacelog_url }}'>Spacelog</a>.
+  {% endblocktrans %}</p>
+
+  <h2>{% blocktrans %}How do I use it?{% endblocktrans %}</h2>
+
+  <p>{% blocktrans %}
+    When you clean up a transcript page on Kallisto, you see an image of the
+    original on the left, and the text on the right. The idea is to make the
+    text match the original, by fixing any differences you see.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    Each page will be shown to at least two people. If you don't see any
+    problems, save the page without making changes to confirm that it's
+    correct. Kallisto will mark that page as finished, and not show it to
+    anyone else.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    The majority of the content on each page will be lines spoken by the
+    astronauts or ground control staff. A typical line looks like this:
+  {% endblocktrans %}</p>
+
+  <pre><kbd>02 07 55 20  CMP  I believe we've had a problem here.</kbd></pre>
+
+  <p>{% blocktrans %}The line has three components:{% endblocktrans %}</p>
+
+  <ol>
+    <li>{% blocktrans %}
+      <kbd>02 07 55 20</kbd> is the time that this line was recorded.
+      In this case, it was 2 days, 7 hours, 55 minutes, and 20 seconds into
+      the mission. Shorter missions might not include the number of days.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      <kbd>CMP</kbd> is the person speaking. In this case, CMP is short for
+      Command Module Pilot.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      <kbd>I believe we've had a problem here</kbd> is what was said. It might
+      span several lines.
+    {% endblocktrans %}</li>
+  </ol>
+
+  <p>{% blocktrans %}
+    If possible, it's helpful to leave "- -" at the end of the line as is,
+    rather than "correct" it to a single dash, or "--" or something. The
+    Spacelog Web site will display this nicely, and we prefer not to change the
+    intent of the original transcripts where possible.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    The other lines—lines where no one is speaking—are important too. They
+    contain extra information, like telling us when the spacecraft starts a new
+    orbit or starts communicating with a different ground station.
+  {% endblocktrans %}</p>
+
+  <h2>{% blocktrans %}What's the mission wiki page for?{% endblocktrans %}</h2>
+
+  <p>{% blocktrans with apollo8_wiki_url='https://github.com/Spacelog/Spacelog/wiki/Mission:-Apollo-8' %}
+    At the top of each page is a link to a mission wiki page, for example
+    here's the
+    <a href='{{ apollo8_wiki_url }}'>mission wiki page for Apollo 8</a>.
+    Editing the wiki page requires a GitHub account, but it's free to
+    sign up.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    The wiki page is a useful place to keep notes about things that you notice
+    while transcribing the mission, that might be useful for adding the extra
+    information we'll want to display on the Spacelog Web site.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    The following kinds of information are usually very useful:
+  {% endblocktrans %}</p>
+
+  <ul>
+    <li>{% blocktrans %}
+      Any time a ground crew member is called by name. The ground staff often
+      operated in shifts, so the same speaker identifier in the
+      transcript—<code>CC</code> for the capsule communicator, <code>F</code>
+      for the flight director, etc.—can refer to different people at different
+      times during the mission.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      Log lines that stand out as particularly interesting or amusing. These
+      make good quotations to highlight on the mission's home page.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      Significant mission events. These might mark the end of one phase of a
+      mission and the beginning of the next, like when a spacecraft leaves
+      Earth orbit for the Moon, or they might be a significant moment, like a
+      live TV broadcast or the moment when Apollo 13 sent the famous message
+      “Houston, we've had a problem”.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      Moments that might correspond to photographs we can add to the mission
+      transcript. The crew might, for example, directly report that they've
+      just taken a photo of something specific.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      Terms that should appear in the mission glossary. Space flight is full
+      of technical terms, and if you encounter an unfamiliar term it's good to
+      make a note of it. If you happen to look up the definition, then it's
+      good to make a note of that, too.
+    {% endblocktrans %}</li>
+    <li>{% blocktrans %}
+      Lines or pages that might cause trouble. The original transcripts
+      sometimes contain strange characters, missing times, footnotes, and other
+      unusual features that might need extra attention when we import the
+      mission into the Spacelog Web site.
+    {% endblocktrans %}</li>
+  </ul>
+
+  <h2>{% blocktrans %}Who owns the transcripts produced on Kallisto?{% endblocktrans %}</h2>
+
+  <p>{% blocktrans with cc0_url='https://creativecommons.org/publicdomain/zero/1.0/' %}
+    All of the Spacelog transcripts are available under the
+    <a href='{{ cc0_url }}'>CC0 license</a>,
+    which means they're dedicated to the public domain and can be freely used
+    by anyone.
+  {% endblocktrans %}</p>
+
+  <p>{% blocktrans %}
+    If you contribute to a transcript on Kallisto, you agree to your
+    contributions being released under this license.
+  {% endblocktrans %}</p>
+
+  <h2>{% blocktrans %}What happens once the mission is finished?{% endblocktrans %}</h2>
+
+  <p>{% blocktrans with trello_url='https://trello.com/b/g3qm266Q/missions' %}
+    Once we've cleaned every page in the mission, there's still a lot of work
+    to do before it can be launched on Spacelog. You can keep track of where
+    each mission is up to on our
+    <a href='{{ trello_url }}'>missions Trello board</a>.
+    If you'd like to help out with any of the post-transcription tasks, please
+    get in touch using the contact details below.
+  {% endblocktrans %}</p>
+
+  <h2>{% blocktrans %}Where can I ask get more help?{% endblocktrans %}</h2>
+
+  <p>{% blocktrans with email='spacelog@googlegroups.com' irc_url='https://webchat.freenode.net/?channels=spacelog' %}
+    If you're stuck, and this page doesn't help to answer your questions, the
+    Spacelog team are happy to help. The best ways to get in touch are by
+    sending an email to the Spacelog Google Group at
+    <a href='mailto:{{ email }}'>{{ email }}</a>,
+    or chatting to us in the
+    <a href='{{ irc_url }}'>#spacelog IRC channel on Freenode</a>.
+  {% endblocktrans %}</p>
+{% endblock %}
