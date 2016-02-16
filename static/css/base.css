@@ -313,7 +313,7 @@ html.js-ready header ul.anon.user-options li:hover {
     padding: 33px 0;
 }
 .clean.page #clean textarea {
-    font-family: monospace;
+    font-family: 'Inconsolata', monospace;
     line-height: 175%;
 }
 .clean.page form button {
