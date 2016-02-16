@@ -42,6 +42,11 @@ emulated. All the sizing is based on early pages of MA8, and so will
 undoubtedly fail on other missions and possibly on later pages of that
 one.
 
-## Author
+## Authors
 
-[James Aylett](https://github.com/jaylett) and the [Spacelog](https://github.com/Spacelog) team.
+ * [James Aylett](https://github.com/jaylett)
+ * [George Brocklehurst](https://github.com/georgebrock)
+ * [JP Burke](https://github.com/JPinSPACE)
+ * [Matthew Somerville](https://github.com/dracos)
+
+With assistance and ideas from the rest of the [Spacelog](https://github.com/Spacelog) team.
