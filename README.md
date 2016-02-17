@@ -6,7 +6,7 @@ Kallisto is a simple web app that allows many people to contribute to cleaning a
 
 This is very early days, but:
 
- * Ubuntu (14.04) + postgresql-9.3 + imagemagick + ghostscript + libpng12-0
+ * Ubuntu (14.04) + postgresql-9.3 + imagemagick + ghostscript + libpng12-0 + python-dev
  * Create a database called "kallisto" accessible by "user" with no password
  * Django 1.7 app; `pip install -r requirements/dev.txt` into a virtualenv, then `python manage.py migrate` should get you started
  * You need to make a mission, which must include a mission patch (because we want things to look pretty!)
