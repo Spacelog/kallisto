@@ -18,6 +18,10 @@ To generate text from a PDF:
 
   $ gs -dNOPAUSE -dBATCH -sDEVICE=txt -sOutputFile=text/page-%03d.txt <pdf-file>
 
+or with ghostscript 9.18 (eg in homebrew):
+
+  $ gs -dNOPAUSE -dBATCH -sDEVICE=txtwrite -sOutputFile=text/page-%03d.txt <pdf-file>
+
 Note that PNGs will be 0-indexed where text is 1-indexed, because tool
 consistency between ImageMagick and ghostscript would destroy the
 universe."""
