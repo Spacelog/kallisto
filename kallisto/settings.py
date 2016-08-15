@@ -103,6 +103,7 @@ if 'true' == os.environ.get('EMAILS_LIVE', 'false'): # pragma: no cover
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'Kallisto by Spacelog... <kallisto@spacelog.org>'
+DEFAULT_TO_EMAIL = [ 'kallisto-errors@spacelog.org' ]
 SERVER_EMAIL = 'kallisto-errors@spacelog.org'
 
 
