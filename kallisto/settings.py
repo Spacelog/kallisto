@@ -110,9 +110,10 @@ SERVER_EMAIL = 'kallisto-errors@spacelog.org'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'kallisto',
-         'USER': 'user',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kallisto',
+        'USER': 'kallisto',
+        'PASSWORD': 'kallisto',
      }
 }
 import dj_database_url
