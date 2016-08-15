@@ -110,7 +110,15 @@ class EmailConfirmationTokenGenerator(PasswordResetTokenGenerator):
         # We limit the hash to 20 chars to keep URL short
 
         # Ensure results are consistent across DB backends
-        login_timestamp = user.last_login.replace(microsecond=0, tzinfo=None)
+        if user.last_login is None:
+            # Gets converted to a string directly, so this will do fine
+            # since as soon as they log in this will change.
+            login_timestamp = 0
+        else:
+            login_timestamp = user.last_login.replace(
+                microsecond=0,
+                tzinfo=None,
+            )
 
         value = (six.text_type(user.pk) + user.password +
                 six.text_type(login_timestamp) + six.text_type(timestamp))

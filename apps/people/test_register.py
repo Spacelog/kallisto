@@ -47,7 +47,7 @@ class Register(WebTest):
         self.assertTrue('welcome' in email.subject.lower())
         email = mail.outbox[0]
         self.assertEqual('text/html', email.alternatives[0][1])
-        soup = BeautifulSoup(email.alternatives[0][0])
+        soup = BeautifulSoup(email.alternatives[0][0], 'html.parser')
         confirm_url = soup.findAll('a')[0]['href'] # FIXME: fragile dependency on HTML email details!
 
         # user should be inactive; when we hit the URL it should become active
