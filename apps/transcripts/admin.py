@@ -13,6 +13,7 @@ class MissionAdmin(admin.ModelAdmin):
         'start',
         'end',
         'n_pages',
+        'active',
     )
 
     def n_pages(self, obj):
