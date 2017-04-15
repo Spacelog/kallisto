@@ -118,6 +118,10 @@ class CustomUserAdmin(UserAdmin):
         'is_staff',
         'date_joined',
     )
+    search_fields = (
+        'email',
+        'name',
+    )
     ordering = ('name',)
 
 
